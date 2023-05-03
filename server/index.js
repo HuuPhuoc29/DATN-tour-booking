@@ -1,10 +1,17 @@
 import express  from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose"
+import authRoute from "./routes/auth.js"
+import usersRoute from "./routes/users.js"
+import hotelsRoute from "./routes/hotels.js"
+import roomsRoute from "./routes/rooms.js"
+
 
 const app = express()
+const PORT = process.env.PORT || 5000;
 dotenv.config()
 
+// Connect MongoDB
 const connect = async () => {
     try {
         await mongoose.connect(process.env.MONGO);
@@ -14,8 +21,25 @@ const connect = async () => {
     }
 }
 
+mongoose.connection.on("disconnected", () => {
+    console.log("MongoDB disconnected!")
+})
+mongoose.connection.on("connected", () => {
+    console.log("MongoDB connected!")
+})
 
-app.listen(8800, () => {
+app.get("/", (req, res) => {
+    res.send("Hello")
+})
+
+//middlewares
+app.use("/server/auth", authRoute)
+app.use("/server/users", usersRoute)
+app.use("/server/hotels", hotelsRoute)
+app.use("/server/rooms", roomsRoute)
+
+
+app.listen(PORT, () => {
     connect()
-    console.log("Connected to BE")
+    console.log(`Connected to server. Server started on port: ${PORT}`)
 })
