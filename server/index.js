@@ -33,6 +33,8 @@ app.get("/", (req, res) => {
 })
 
 //middlewares
+app.use(express.json())
+
 app.use("/server/auth", authRoute)
 app.use("/server/users", usersRoute)
 app.use("/server/hotels", hotelsRoute)

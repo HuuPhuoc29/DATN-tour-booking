@@ -1,4 +1,4 @@
-import express  from "express";
+import express from "express";
 
 const router = express.Router();
 
@@ -10,6 +10,6 @@ const router = express.Router();
 
 // GET
 
-// GET ALLs
+// GET ALL
 
 export default router
