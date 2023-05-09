@@ -41,7 +41,7 @@ app.use("/server/hotels", hotelsRoute)
 app.use("/server/rooms", roomsRoute)
 
 app.use((req, res, next) => {
-    res.send("Hello from middlewares")
+    // res.send("Hello from middlewares")
 })
 
 

@@ -5,7 +5,7 @@ const router = express.Router();
 
 // CREATE
 router.post("/", async (req, res) => {
-    console.log("Start Hotel ")
+    // console.log("Start Hotel ")
 
     const newHotel = new Hotel(req.body)
     
@@ -59,7 +59,7 @@ router.get("/:id", async (req, res) => {
 
 // GET ALL
 router.get("/", async (req, res, next) => {    
-    console.log("Hotel route")
+    // console.log("Hotel route")
     // next()
     
     try {
