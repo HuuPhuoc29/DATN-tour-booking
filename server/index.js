@@ -40,6 +40,10 @@ app.use("/server/users", usersRoute)
 app.use("/server/hotels", hotelsRoute)
 app.use("/server/rooms", roomsRoute)
 
+app.use((req, res, next) => {
+    res.send("Hello from middlewares")
+})
+
 
 app.listen(PORT, () => {
     connect()

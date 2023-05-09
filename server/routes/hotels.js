@@ -5,14 +5,18 @@ const router = express.Router();
 
 // CREATE
 router.post("/", async (req, res) => {
+    console.log("Start Hotel ")
+
     const newHotel = new Hotel(req.body)
     
     try {
         const savedHotel = await newHotel.save()
         res.status(200).json(savedHotel)
+        console.log("Mid Hotel ")
     } catch(err) {
         res.status(500).json(err)
     }
+    console.log("End Hotel ")
 })
 
 // UPDATE
@@ -54,7 +58,10 @@ router.get("/:id", async (req, res) => {
 })
 
 // GET ALL
-router.get("/:id", async (req, res) => {    
+router.get("/", async (req, res, next) => {    
+    console.log("Hotel route")
+    // next()
+    
     try {
         const gotAllHotels = await Hotel.find()
         res.status(200).json(gotAllHotels)
