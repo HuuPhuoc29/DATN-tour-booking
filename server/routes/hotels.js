@@ -66,7 +66,6 @@ router.get("/", async (req, res, next) => {
     err.status = 404 
     err.message = "Not found!"
     if(failed) return next(err)
-
     try {
         const gotAllHotels = await Hotel.findById("sas")
         res.status(200).json(gotAllHotels)
