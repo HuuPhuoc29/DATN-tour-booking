@@ -1,77 +1,23 @@
 import express  from "express";
 import Hotel from "../models/Hotel.js"
 import { createError } from "../utils/error.js";
+import { createHotel, deleteHotel, getAllHotels, getHotel, updateHotel } from "../controllers/hotel.js";
 
 const router = express.Router();
 
 // CREATE
-router.post("/", async (req, res) => {
-    // console.log("Start Hotel ")
-
-    const newHotel = new Hotel(req.body)
-    
-    try {
-        const savedHotel = await newHotel.save()
-        res.status(200).json(savedHotel)
-        console.log("Mid Hotel ")
-    } catch(err) {
-        res.status(500).json(err)
-    }
-    console.log("End Hotel ")
-})
+router.post("/", createHotel)
 
 // UPDATE
-router.put("/:id", async (req, res) => {    
-    try {
-        const updatedHotel = await Hotel.findByIdAndUpdate(
-            req.params.id, 
-            { $set: req.body}, 
-            { new: true }
-        )
-        res.status(200).json(updatedHotel)
-    } catch(err) {
-        res.status(500).json(err)
-    }
-})
+router.put("/:id", updateHotel)
 
 // DELETE
-router.delete("/:id", async (req, res) => {    
-    try {
-        await Hotel.findByIdAndDelete(
-            req.params.id, 
-            { $set: req.body}, 
-            { new: true }
-        )
-        res.status(200).json("Delete successfully")
-    } catch(err) {
-        res.status(500).json(err)
-    }
-})
+router.delete("/:id", deleteHotel)
 
 // GET
-router.get("/:id", async (req, res) => {    
-    try {
-        const gotHotel = await Hotel.findById(req.params.id)
-        res.status(200).json(gotHotel)
-    } catch(err) {
-        res.status(500).json(err)
-    }
-})
+router.get("/:id", getHotel)
 
 // GET ALL
-router.get("/", async (req, res, next) => {    
-    // console.log("Hotel route")
-    // next()
-    const failed = true
-    if(failed) return next(createError(401, "You are not authenticated!"))
-
-    try {
-        const gotAllHotels = await Hotel.findById("sas")
-        res.status(200).json(gotAllHotels)
-    } catch(err) {
-        // res.status(500).json(err)
-        next(err)
-    }
-})
+router.get("/", getAllHotels)
 
 export default router
