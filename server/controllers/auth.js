@@ -37,8 +37,8 @@ export const login = async(req, res, next) => {
         // Token
         const token = jwt.sign({
             id: user._id,
-            isAdmin: user.isAdmin,
-        })
+            isAdmin: user.isAdmin
+        }, process.env.JWT)
         
         // Hide security and unnecessary things
         const {password, isAdmin, isActive, ...otherDetails} = user._doc;
@@ -48,6 +48,7 @@ export const login = async(req, res, next) => {
         })
         .status(200)
         .json({...otherDetails})
+        // res.status(200).json({...otherDetails})
     } catch(err){
         next(err)
     }
