@@ -9,7 +9,7 @@ import roomsRoute from "./routes/rooms.js"
 import cookieParser from "cookie-parser";
 
 const app = express()
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8800;
 dotenv.config()
 
 // Connect MongoDB
