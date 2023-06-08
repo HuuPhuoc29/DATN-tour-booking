@@ -1,4 +1,5 @@
 import Hotel from "../models/Hotel.js";
+import Room from "../models/Room.js";
 
 //CREATE
 export const createHotel = async (req, res, next) => {
@@ -54,17 +55,17 @@ export const getHotel = async (req, res, next) => {
 export const getAllHotels = async (req, res, next) => {
     // const failed = true
     // if(failed) return next(createError(401, "You are not authenticated!"))
-    // const { min, max, ...others} = req.query;
+    const { min, max, ...others} = req.query;
 
     try {
         // const gotAllHotels = await Hotel.find(req.query).limit(req.query.limit)
         
-        // const gotAllHotels = await Hotel.find({
-        //     ...others,
-        //     cheapestPrice: { $gt: min | 1, $lt: max || 999 },
-        //   }).limit(req.query.limit);
+        const gotAllHotels = await Hotel.find({
+            ...others,
+            cheapestPrice: { $gt: min | 1000, $lt: max || 9999999 },
+          }).limit(req.query.limit);
 
-        const gotAllHotels = await Hotel.find(req.query)
+        // const gotAllHotels = await Hotel.find(req.query)
         res.status(200).json(gotAllHotels)
     } catch(err) {
         // res.status(500).json(err)
@@ -108,3 +109,18 @@ export const countByType = async (req, res, next) => {
         next(err)
     }
 }
+
+//GET ROOMS OF HOTEL
+export const getHotelRooms = async (req, res, next) => {
+    try {
+      const hotel = await Hotel.findById(req.params.id);
+      const list = await Promise.all(
+        hotel.rooms.map((room) => {
+          return Room.findById(room);
+        })
+      );
+      res.status(200).json(list)
+    } catch (err) {
+      next(err);
+    }
+  };

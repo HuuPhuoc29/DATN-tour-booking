@@ -19,7 +19,9 @@ const PropertyList = () => {
     <div className="pList">
       { 
         loading ? ( 
-        <>
+          "Loading types, please waiting"
+        ) : (
+          <>
         { 
           data && images.map((img, index) => (
             <div className="pListItem">
@@ -36,7 +38,7 @@ const PropertyList = () => {
           ))
         }
         </>
-        ) : ("Loading types, please waiting") 
+        ) 
       }
     </div>
   );
