@@ -66,6 +66,14 @@
       border: 1px dotted rgba(0, 0, 139, 0.596);
       cursor: pointer;
     }
+
+    .updateButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: green;
+      border: 1px dotted rgba(4, 243, 16, 0.6);
+      cursor: pointer;
+    }
     
     .deleteButton {
       padding: 2px 5px;

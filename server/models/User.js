@@ -6,11 +6,24 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    fullname: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     email: {
       type: String,
       required: true,
       unique: true,
     },
+    birthday: {
+      type: Date,
+      required: false,
+    },
+    // gender: {
+    //   type: Sequelize.ENUM('male', 'female', 'undefined'),
+    //   allowNull: true,
+    // },
     country: {
       type: String,
       required: false,
