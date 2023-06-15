@@ -1,4 +1,6 @@
 import avatar from "../src/asset/img/avatar.jpg"
+import moment from "moment";
+import dateFormat, { masks } from "dateformat";
 
 export const userColumns = [
   { field: "_id", headerName: "ID", width: 70 },
@@ -24,6 +26,19 @@ export const userColumns = [
     field: "email",
     headerName: "Email",
     width: 230,
+  },
+  {
+    field: "birthday",
+    headerName: "Birthday",
+    width: 150,
+    renderCell: (params) => {
+      console.log(params)      
+    },
+    // accessor: d => {
+    //   return Moment(d.birthday)
+    //     .local()
+    //     .format("DD-MM-YYYY hh:mm:ss a")
+    // }
   },
   {
     field: "country",

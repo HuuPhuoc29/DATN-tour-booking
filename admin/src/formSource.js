@@ -6,6 +6,12 @@ export const userInputs = [
     placeholder: "john_doe",
   },
   {
+    id: "fullname",
+    label: "Fullname",
+    type: "text",
+    placeholder: "John Doe",
+  },
+  {
     id: "email",
     label: "Email",
     type: "email",
@@ -16,6 +22,12 @@ export const userInputs = [
     label: "Phone",
     type: "text",
     placeholder: "+1 234 567 89",
+  },
+  {
+    id: "birthday",
+    label: "Birthday",
+    type: "date",
+    // placeholder: "+1 234 567 89",
   },
   {
     id: "password",
