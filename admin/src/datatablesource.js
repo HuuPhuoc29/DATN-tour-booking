@@ -1,4 +1,4 @@
-import avatar from "../src/asset/img/avatar.jpg"
+import avatar from "../src/asset/images/avatar.jpg"
 import moment from "moment";
 import dateFormat, { masks } from "dateformat";
 
@@ -69,6 +69,35 @@ export const userColumns = [
   // },
 ];
 
+export const tourColumns = [
+  // { field: "_id", headerName: "ID", width: 250 },
+  {
+    field: "name",
+    headerName: "Name",
+    width: 150,
+  },
+  {
+    field: "title",
+    headerName: "Title",
+    width: 230,
+  },
+  {
+    field: "city",
+    headerName: "City",
+    width: 100,
+  },
+  {
+    field: "price",
+    headerName: "Price",
+    width: 100,
+  },
+  {
+    field: "description",
+    headerName: "Description",
+    width: 200,
+  },
+];
+
 export const hotelColumns = [
   // { field: "_id", headerName: "ID", width: 250 },
   {
@@ -87,10 +116,26 @@ export const hotelColumns = [
     width: 230,
   },
   {
+    field: "address",
+    headerName: "Address",
+    width: 100,
+  },
+  {
     field: "city",
     headerName: "City",
     width: 100,
   },
+  {
+    field: "cheapestPrice",
+    headerName: "Price",
+    width: 100,
+  },
+  {
+    field: "description",
+    headerName: "Description",
+    width: 200,
+  },
+  
 ];
 
 export const roomColumns = [
@@ -101,7 +146,7 @@ export const roomColumns = [
     width: 230,
   },
   {
-    field: "desc",
+    field: "description",
     headerName: "Description",
     width: 200,
   },

@@ -6,31 +6,40 @@ import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlin
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import { AuthContext } from "../../context/AuthContext"
+
+import avatar from "../../asset/images/avatar.jpg"
+
 import { DarkModeContext } from "../../context/darkModeContext";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
 
+  const { user } = useContext(AuthContext)
+
   return (
     <div className="navbar">
       <div className="wrapper">
         <div className="search">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
+          <Link to="/users" type="button" class="btn btn-link">Users</Link>
+          <Link to="/tours" type="button" class="btn btn-link">Tours</Link>
+          <Link to="/hotels" type="button" class="btn btn-link">Hotels</Link>
+          <Link to="/rooms" type="button" class="btn btn-link">Rooms</Link>
         </div>
         <div className="items">
-          <div className="item">
+          {/* <div className="item">
             <LanguageOutlinedIcon className="icon" />
             English
-          </div>
+          </div> */}
           <div className="item">
             <DarkModeOutlinedIcon
               className="icon"
               onClick={() => dispatch({ type: "TOGGLE" })}
             />
           </div>
-          <div className="item">
+          {/* <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
           </div>
           <div className="item">
@@ -40,13 +49,13 @@ const Navbar = () => {
           <div className="item">
             <ChatBubbleOutlineOutlinedIcon className="icon" />
             <div className="counter">2</div>
-          </div>
+          </div> */}
           <div className="item">
             <ListOutlinedIcon className="icon" />
           </div>
           <div className="item">
             <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src={avatar}
               alt=""
               className="avatar"
             />

@@ -1,11 +1,49 @@
-import "./newRoom.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
+import "./newUser.scss";
+import Sidebar from "../../../components/sidebar/Sidebar";
+import Navbar from "../../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const NewRoom = ({ inputs, title }) => {
+const NewUser = ({ inputs, title }) => {
   const [file, setFile] = useState("");
+  const [info, setInfo] = useState({});
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "upload");
+    try {
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/huuphuochph/image/upload",
+        data
+      );
+
+      // console.log(uploadRes.data)
+
+      const { url } = uploadRes.data;
+
+      const newUser = {
+        ...info,
+        img: url,
+      };
+
+      await axios.post("/auth/register", newUser);
+      alert("Thành công")
+      navigate("/users")
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(info)
 
   return (
     <div className="new">
@@ -43,10 +81,10 @@ const NewRoom = ({ inputs, title }) => {
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
+                  <input onChange={handleChange} type={input.type} placeholder={input.placeholder} id={input.id}/>
                 </div>
               ))}
-              <button>Send</button>
+              <button onClick={handleClick}>Send</button>
             </form>
           </div>
         </div>
@@ -55,4 +93,4 @@ const NewRoom = ({ inputs, title }) => {
   );
 };
 
-export default NewRoom;
+export default NewUser;

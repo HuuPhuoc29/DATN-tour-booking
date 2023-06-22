@@ -1,15 +1,20 @@
+import 'antd/dist/reset.css';
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
-import New from "./pages/new/New";
+import NewUser from "./pages/new/newUser/NewUser";
+import NewTour from "./pages/new/newTour/NewTour";
+import NewHotel from "./pages/new/newHotel/NewHotel";
+import NewRoom from "./pages/new/newRoom/NewRoom";
+import Hotel from "./pages/show/hotel/Hotel"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import { tourColumns, hotelColumns, roomColumns, userColumns } from "./datatablesource";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -57,22 +62,23 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={userInputs} title="Add New User" />
+                    <NewUser inputs={userInputs} title="Add New User" />
                   </ProtectedRoute>
                 }
               />
             </Route>
-            <Route path="hotels">
+
+            <Route path="tours">
             <Route
                 index
                 element={
                   <ProtectedRoute>
-                    <List columns={hotelColumns}/>
+                    <List columns={tourColumns}/>
                   </ProtectedRoute>
                 }
               />
               <Route
-                path=":productId"
+                path=":tourId"
                 element={
                   <ProtectedRoute>
                     <Single />
@@ -83,7 +89,69 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <Single  />
+                    <NewTour />
+                  </ProtectedRoute>
+                }
+              />
+              {/* <Route
+                path="show"
+                element={
+                  <ProtectedRoute>
+                    <ShowTour />
+                  </ProtectedRoute>
+                }
+              /> */}
+            </Route>    
+            
+            <Route path="hotels">
+            <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <List columns={hotelColumns}/>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":hotelId"
+                element={
+                  <ProtectedRoute>
+                    <Hotel />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewHotel />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+
+            <Route path="rooms">
+            <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <List columns={roomColumns}/>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":hotelId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewRoom />
                   </ProtectedRoute>
                 }
               />

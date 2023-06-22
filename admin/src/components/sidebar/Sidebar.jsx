@@ -11,6 +11,9 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import TourIcon from '@mui/icons-material/Tour';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
@@ -21,22 +24,31 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">lamadmin</span>
+          <span className="logo">Admin</span>
         </Link>
       </div>
       <hr />
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Dashboard</span>
+            </li>
+          </Link>
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
+            </li>
+          </Link>
+          
+          <Link to="/tours" style={{ textDecoration: "none" }}>
+            <li>
+              <TourIcon className="icon" />
+              <span>Tours</span>
             </li>
           </Link>
           <Link to="/hotels" style={{ textDecoration: "none" }}>
@@ -47,7 +59,7 @@ const Sidebar = () => {
           </Link>
           <Link to="/rooms" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="icon" />
+              <MeetingRoomIcon className="icon" />
               <span>Rooms</span>
             </li>
           </Link>
@@ -55,10 +67,10 @@ const Sidebar = () => {
             <CreditCardIcon className="icon" />
             <span>Bills</span>
           </li>
-          <li>
+          {/* <li>
             <LocalShippingIcon className="icon" />
             <span>Orders</span>
-          </li>
+          </li> */}
           {/* <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

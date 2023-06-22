@@ -1,23 +1,27 @@
 import { Link } from "react-router-dom";
 import "./searchItem.css";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import PlaceIcon from '@mui/icons-material/Place';
 
 const SearchItem = ({item}) => {
   console.log(item)
-
+  function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   return (
     <div className="searchItem">
-      <img src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1" alt="" className="siImg" />
+      <img src={item.photos[0]} alt="" className="siImg" />
       <div className="siDesc">
         <h1 className="siTitle">{item.name}</h1>
-        <span className="siDistance">{item.distance}m from center</span>
-        <span className="siTaxiOp">Free airport taxi</span>
-        <span className="siSubtitle">
+        <span className="siAddress"><PlaceIcon style={{ "font-size": "15px"}}/> {item.address}</span>
+        <span className="siDistance">{item.distance}m</span>
+        {/* <span className="siSubtitle">
           Studio Apartment with Air conditioning
-        </span>
+        </span> */}
         <span className="siFeatures">{item.description}</span>
-        <span className="siCancelOp">Free cancellation </span>
+        <span className="siType">{capitalizeFirstLetter(item.type)}</span>
         <span className="siCancelOpSubtitle">
-          You can cancel later, so lock in this great price today!
+          Đặt phòng ngay hôm nay!
         </span>
       </div>
       <div className="siDetails">
@@ -26,10 +30,10 @@ const SearchItem = ({item}) => {
           <button>{item.rating}</button>
         </div>}
         <div className="siDetailTexts">
-          <span className="siPrice">${item.cheapestPrice}</span>
-          <span className="siTaxOp">Includes taxes and fees</span>
+          <span className="siPrice">{item.cheapestPrice}</span>
+          <span className="siTaxOp">Ấn để xem</span>
           <Link to={`/hotels/${item._id}`}>
-          <button className="siCheckButton">See availability</button>
+          <button className="siCheckButton">Xem <ArrowForwardIosIcon style={{ "font-size": "10px"}}/></button>
           </Link>
         </div>
       </div>

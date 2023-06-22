@@ -54,3 +54,24 @@ export const login = async(req, res, next) => {
         next(err)
     }
 }
+
+export const logout = async(req, res, next) => {
+    try {
+        
+        if (req.headers && req.headers.authorization) { 
+            const token= req.headers.authorization.split(' ')[1]    
+            if(!token) {
+                return res.status (401).json({success: false, message: 'Authorization fail!'})
+            }
+            const tokens = req.user.tokens;
+            const newTokens = tokens.filter(t => t == token)
+            await User.findByIdAndUpdate(req.user._id, {tokens: newTokens})
+            res.json({
+                success: true,
+                message: "Sign out successfully"
+            })
+        }
+    } catch (err){
+        next(err)
+    }
+}

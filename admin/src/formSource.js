@@ -3,19 +3,16 @@ export const userInputs = [
     id: "username",
     label: "Username",
     type: "text",
-    placeholder: "john_doe",
   },
   {
     id: "fullname",
     label: "Fullname",
     type: "text",
-    placeholder: "John Doe",
   },
   {
     id: "email",
     label: "Email",
     type: "email",
-    placeholder: "john_doe@gmail.com",
   },
   {
     id: "phone",
@@ -81,7 +78,7 @@ export const productInputs = [
   },
 ];
 
-export const hotelInputs = [
+export const tourInputs = [
   {
     id: "name",
     label: "Name",
@@ -89,11 +86,44 @@ export const hotelInputs = [
     placeholder: "My Hotel",
   },
   {
-    id: "type",
-    label: "Type",
+    id: "city",
+    label: "City",
     type: "text",
-    placeholder: "hotel",
+    placeholder: "New York",
   },
+  {
+    id: "title",
+    label: "Title",
+    type: "text",
+    placeholder: "The best Hotel",
+  },
+  {
+    id: "description",
+    label: "Description",
+    type: "text",
+    placeholder: "description",
+  },
+  {
+    id: "price",
+    label: "Price",
+    type: "text",
+    placeholder: "100",
+  },
+];
+
+export const hotelInputs = [
+  {
+    id: "name",
+    label: "Name",
+    type: "text",
+    placeholder: "My Hotel",
+  },
+  // {
+  //   id: "type",
+  //   label: "Type",
+  //   type: "text",
+  //   placeholder: "hotel",
+  // },
   {
     id: "city",
     label: "City",
@@ -119,7 +149,7 @@ export const hotelInputs = [
     placeholder: "The best Hotel",
   },
   {
-    id: "desc",
+    id: "description",
     label: "Description",
     type: "text",
     placeholder: "description",
@@ -128,7 +158,7 @@ export const hotelInputs = [
     id: "cheapestPrice",
     label: "Price",
     type: "text",
-    placeholder: "100",
+    placeholder: "200",
   },
 ];
 

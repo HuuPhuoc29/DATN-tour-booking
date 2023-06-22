@@ -66,21 +66,72 @@
       border: 1px dotted rgba(0, 0, 139, 0.596);
       cursor: pointer;
     }
+  }
+  
+  .imgContainer {
+    .left {
+      flex: 1;
+      text-align: center;
 
-    .updateButton {
-      padding: 2px 5px;
-      border-radius: 5px;
-      color: green;
-      border: 1px dotted rgba(4, 243, 16, 0.6);
-      cursor: pointer;
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
     }
-    
-    .deleteButton {
-      padding: 2px 5px;
-      border-radius: 5px;
-      color: crimson;
-      border: 1px dotted rgba(220, 20, 60, 0.6);
-      cursor: pointer;
+
+    .right {
+      flex: 2;
+      // padding: 0px 20px;
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: space-between;
+
+        .selectRooms{
+          width: 100%;
+
+          select{
+            width: 100%;
+            padding: 10px;
+          }
+        }
+
+        .formInput {
+          width: 40%;
+
+          label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .icon {
+              cursor: pointer;
+            }
+          }
+
+          input {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-bottom: 1px solid gray;
+          }
+        }
+
+        button {
+          width: 150px;
+          padding: 10px;
+          border: none;
+          background-color: teal;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+          margin-top: 10px;
+        }
+      }
     }
   }
 }

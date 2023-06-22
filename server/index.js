@@ -5,6 +5,7 @@ import authRoute from "./routes/auth.js"
 import usersRoute from "./routes/users.js"
 import hotelsRoute from "./routes/hotels.js"
 import roomsRoute from "./routes/rooms.js"
+import toursRoute from "./routes/tour.js"
 
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -41,6 +42,7 @@ app.use(express.json())
 
 app.use("/server/auth", authRoute)
 app.use("/server/users", usersRoute)
+app.use("/server/tours", toursRoute)
 app.use("/server/hotels", hotelsRoute)
 app.use("/server/rooms", roomsRoute)
 

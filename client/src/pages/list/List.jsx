@@ -37,17 +37,17 @@ const List = () => {
       <div className="listContainer">
         <div className="listWrapper">
           <div className="listSearch">
-            <h1 className="lsTitle">Search</h1>
+            <h1 className="lsTitle">Tìm kiếm</h1>
             <div className="lsItem">
-              <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <label>Địa điểm</label>
+              <input type="text" placeholder={destination} disabled ></input>
             </div>
             <div className="lsItem">
-              <label>Check-in Date</label>
+              <label>Ngày đăng ký</label>
               <span onClick={() => setOpenDate(!openDate)}>{`${format(
                 dates[0].startDate,
-                "MM/dd/yyyy"
-              )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
+                "dd/MM/yyyy"
+              )} đến ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
               {openDate && (
                 <DateRange
                   onChange={(item) => setDates([item.selection])}
@@ -57,22 +57,22 @@ const List = () => {
               )}
             </div>
             <div className="lsItem">
-              <label>Options</label>
+              <label>Tùy chọn</label>
               <div className="lsOptions">
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
-                    Min price <small>per night</small>
+                    Giá thấp nhất
                   </span>
                   <input type="number" onChange = { e => setMin(e.target.value) } className="lsOptionInput" />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
-                    Max price <small>per night</small>
+                    Giá cao nhất
                   </span>
                   <input type="number" onChange = { e => setMax(e.target.value) } className="lsOptionInput" />
                 </div>
                 <div className="lsOptionItem">
-                  <span className="lsOptionText">Adult</span>
+                  <span className="lsOptionText">Người lớn</span>
                   <input
                     type="number"
                     min={1}
@@ -81,7 +81,7 @@ const List = () => {
                   />
                 </div>
                 <div className="lsOptionItem">
-                  <span className="lsOptionText">Children</span>
+                  <span className="lsOptionText">Trẻ em</span>
                   <input
                     type="number"
                     min={0}
@@ -90,7 +90,7 @@ const List = () => {
                   />
                 </div>
                 <div className="lsOptionItem">
-                  <span className="lsOptionText">Room</span>
+                  <span className="lsOptionText">Phòng</span>
                   <input
                     type="number"
                       min={1}
@@ -100,7 +100,7 @@ const List = () => {
                   </div>
                 </div>
               </div>
-              <button onClick={ handleClick }>Search</button>
+              <button onClick={ handleClick }>Tìm kiếm</button>
             </div>
             <div className="listResult">
               {loading ? (

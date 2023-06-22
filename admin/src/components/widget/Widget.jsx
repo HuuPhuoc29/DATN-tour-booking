@@ -13,11 +13,11 @@ const Widget = ({ type }) => {
   const diff = 20;
 
   switch (type) {
-    case "user":
+    case "users":
       data = {
         title: "USERS",
         isMoney: false,
-        link: "See all users",
+        link: "See all",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -29,11 +29,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+    case "tours":
       data = {
-        title: "ORDERS",
+        title: "TOURS",
         isMoney: false,
-        link: "View all orders",
+        link: "See all",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -45,11 +45,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "hotels":
       data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+        title: "HOTELS",
+        isMoney: false,
+        link: "See all",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -58,11 +58,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
+    case "rooms":
       data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
+        title: "ROOMS",
+        isMoney: false,
+        link: "See all",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"

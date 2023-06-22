@@ -1,8 +1,6 @@
 import "./hotel.css";
-import Navbar from "../../components/navbar/Navbar";
-import Header from "../../components/header/Header";
-import MailList from "../../components/mailList/MailList";
-import Footer from "../../components/footer/Footer";
+import Sidebar from "../../../components/sidebar/Sidebar";
+import Navbar from "../../../components/navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleArrowLeft,
@@ -12,10 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext.js";
-import { SearchContext } from "../../context/SearchContext.js";
-import useFetch from "../../hooks/useFetch.js";
-import Reserve from "../../components/reserve/Reserve.jsx";
+import { AuthContext } from "../../../context/AuthContext.js";
+import { SearchContext } from "../../../context/SearchContext.js";
+import useFetch from "../../../hooks/useFetch.js";
 
 const Hotel = () => {
   const location = useLocation();
@@ -77,18 +74,10 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber)
   };
 
-  const handleClick = () => {
-    if (user) {
-      setOpenModal(true);
-    } else {
-      navigate("/login");
-    }
-  }
 
   return (
     <div>
       <Navbar />
-      <Header type="list" />
       <div className="hotelContainer">
         {open && (
           <div className="slider">
@@ -113,7 +102,6 @@ const Hotel = () => {
           </div>
         )}
         <div className="hotelWrapper">
-          <button onClick={handleClick} className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">{data.name}</h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
@@ -151,14 +139,12 @@ const Hotel = () => {
               <h2>
                 <b>945</b> (9 nights)
               </h2>
-              <button onClick={handleClick}>Reserve or Book Now!</button>
             </div>
           </div>
         </div>
-        <MailList />
-        <Footer />
+        {/* <MailList />
+        <Footer /> */}
       </div>
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
     </div>
   );
 };
