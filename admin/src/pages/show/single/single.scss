@@ -1,0 +1,59 @@
+.single {
+  display: flex;
+  width: 100%;
+  .singleContainer {
+    flex: 6;
+
+    .container {
+      margin-left: 25px;
+      padding: 20px;
+    
+      .row {
+        .col-md-2 {
+          text-align: right;
+        }
+    
+        .row-info {
+          .info-content {
+            margin-top: 10px;
+          }
+        }
+    
+        .title-span {
+          font-weight: 800;
+          font-size: 28px;
+          letter-spacing: 1px;
+          display: block;
+          padding-top: 20px;
+        }
+      }
+    }
+    
+    body {
+      margin-top: 20px;
+      color: #525252;
+    }
+    
+    .profile-head {
+      h1 {
+        font-weight: 800;
+        font-size: 40px;
+      }
+    }
+    
+    .img {
+      border-radius: 5%;
+      width: 190px;
+      height: 190px;
+    }
+    
+    .col-md-6 {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .col-md-5 {
+      font-size: 18px;
+    }
+  }
+}

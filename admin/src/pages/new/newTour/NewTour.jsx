@@ -10,19 +10,10 @@ import axios from "axios";
 const NewTour = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
-  const [rooms, setRooms] = useState([]);
-
-  const { data, loading, error } = useFetch("/rooms");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
-  const handleSelect = (e) => {
-    const value = Array.from(e.target.selectedOptions, (option) => option.value
-    );
-    setRooms(value);
-  }
   
   const handleClick = async (e) => {
     e.preventDefault()
@@ -46,11 +37,11 @@ const NewTour = () => {
 
       const newtour = {
         ...info,
-        rooms,
         photos: list,
       };
 
       await axios.post("/tours", newtour);
+      alert("Thành công")
     } catch(err) {
       console.log(err)
     }

@@ -19,14 +19,28 @@
   text-decoration: none;
 }
 
-.logo{
-  font-weight: 500;
+.logoNav{
+  position: initial;
+  max-width: 50px;
+  max-height: 50px;
+  /* padding-top: 10px; */
 }
 
 .navButton{
   margin-left: 20px;
   border: none;
+  border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
   color: #003580;
+  background-color: white;
+  font-weight: 500;
+}
+
+.navButtonLink:link {
+  text-decoration: none;
+}
+
+.navButtonLink:visited {
+  text-decoration: none;
 }

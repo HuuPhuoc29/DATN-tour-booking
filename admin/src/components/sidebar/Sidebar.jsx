@@ -17,6 +17,7 @@ import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import logo from "../../assets/logo/logo.png"
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -24,7 +25,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">Admin</span>
+          <img className="logoNav" alt="logo" src={logo}></img>
         </Link>
       </div>
       <hr />

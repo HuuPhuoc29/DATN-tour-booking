@@ -10,10 +10,11 @@
     align-items: center;
     justify-content: center;
 
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-      color: #6439ff;
+    .logoNav {
+      position: initial;
+      max-width: 80px;
+      max-height: 80px;
+      padding-top: 10px;
     }
   }
 

@@ -1,6 +1,9 @@
 import express  from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose"
+import nodemailer from "nodemailer";
+import { v4 as uuidv4 } from 'uuid';
+
 import authRoute from "./routes/auth.js"
 import usersRoute from "./routes/users.js"
 import hotelsRoute from "./routes/hotels.js"

@@ -51,10 +51,18 @@ const Datatable = ({columns}) => {
   };
 
   const handleShow = async (id) => {
+    console.log(id)
     try {
-      await axios.get(`/${path}/find/${id}`);
-      setList(list.filter((item) => item._id !== id));
-      navigate(`/${path}/${id}`)
+      if(path == "users"){
+        await axios.get(`/${path}/${id}`);
+        setList(list.filter((item) => item._id !== id));
+        navigate(`/${path}/${id}`)
+      }else{
+        await axios.get(`/${path}/find/${id}`);
+        setList(list.filter((item) => item._id !== id));
+        navigate(`/${path}/${id}`)
+      }
+      
     } catch(err) {
 
     }

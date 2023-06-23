@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import logo from "../../assets/logo/logo.png"
 import "./login.css";
 
 const Login = () => {
@@ -33,28 +34,50 @@ const Login = () => {
   console.log(user)
 
   return (
-    <div className="login">
-      <div className="lContainer">
-        <input
-          type="text"
-          placeholder="username"
-          id="username"
-          onChange={handleChange}
-          className="lInput"
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          onChange={handleChange}
-          className="lInput"
-        />
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
-        </button>
-        {error && <span>{error.message}</span>}
+    <section>
+      <div class="form-box">
+        <div class="form-value">
+          <form action="">
+            <img className="logo" alt="logo" src={logo}></img>
+            <h2 className="span">ĐĂNG NHẬP</h2>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input 
+                  type="text"
+                  placeholder=""
+                  id="username"
+                  onChange={handleChange}
+                  className="lInput"
+                  required
+                  />
+                <label for="">Tên tài khoản</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input 
+                  type="password"
+                  placeholder=""
+                  id="password"
+                  onChange={handleChange}
+                  className="lInput"
+                  required></input>
+                <label for="">Mật khẩu</label>
+            </div>
+            <button disabled={loading} onClick={handleClick} className="lButton">
+              Đăng nhập
+            </button>
+            <div class="register">
+              <p>Chưa có tài khoản! <Link to="/register" style={{ color: "blue" }}>Đăng ký</Link></p>
+            </div>
+            {error && <span style={{ color: "red" }}>{error.message}</span>}
+            <div class="forget">
+              <Link>Quên mật khẩu</Link>
+            </div>
+              
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -33,7 +33,7 @@ const SearchItem = ({item}) => {
           <span className="siPrice">{item.cheapestPrice}</span>
           <span className="siTaxOp">Ấn để xem</span>
           <Link to={`/hotels/${item._id}`}>
-          <button className="siCheckButton">Xem <ArrowForwardIosIcon style={{ "font-size": "10px"}}/></button>
+            <button className="siCheckButton">Xem <ArrowForwardIosIcon style={{ "font-size": "10px"}}/></button>
           </Link>
         </div>
       </div>

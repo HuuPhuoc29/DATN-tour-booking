@@ -2,7 +2,7 @@ import 'antd/dist/reset.css';
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
-import Single from "./pages/single/Single";
+import Single from "./pages/show/single/Single";
 import NewUser from "./pages/new/newUser/NewUser";
 import NewTour from "./pages/new/newTour/NewTour";
 import NewHotel from "./pages/new/newHotel/NewHotel";
@@ -15,6 +15,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import { tourColumns, hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import Register from './pages/register/Register';
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -35,6 +36,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
             <Route 
               index 
               element={

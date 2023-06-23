@@ -8,7 +8,7 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { AuthContext } from "../../context/AuthContext"
 
-import avatar from "../../asset/images/avatar.jpg"
+import avatar from "../../assets/images/avatar.jpg"
 
 import { DarkModeContext } from "../../context/darkModeContext";
 import { Link } from "react-router-dom";

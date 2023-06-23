@@ -1,6 +1,7 @@
 import User from "../models/User.js"
 import { createError } from "../utils/error.js";
 
+import { v4 as uuidv4 } from 'uuid';
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
@@ -9,17 +10,67 @@ export const register = async(req, res, next) => {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
 
+        const { email } = req.body;
+        const verificationToken = uuidv4();
+
         const newUser = new User({
             // username: req.body.username,
             // email: req.body.email,
             ...req.body,
             password: hash,
+            verificationToken,
         })
 
         await newUser.save()
+
+        // Configure Nodemailer for sending emails
+        const transporter = nodemailer.createTransport({
+            // Add your email provider configuration here
+            service: 'gmail',
+            auth: {
+                user: process.env.myEmail,
+                pass: process.env.myPassword,
+            },
+        });
+
+        // Send the verification email
+        const verificationLink = `https://localhost:8800.com/verify-email/${verificationToken}`;
+        const mailOptions = {
+            from: 'luuvanhuuphuoc@gmail.com',
+            to: email,
+            subject: 'Verify your email',
+            text: `Click the following link to verify your email: ${verificationLink}`,
+        };
+
+        await transporter.sendMail(mailOptions);
+
         res.status(200).send("User has been created")
+        res.status(200).json({ message: 'Registration successful' });
+
     } catch(err){
         next(err)
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
+export const verifyEmail = async(req, res, next) => {
+    try{
+        const { token } = req.params;
+        
+        // Find the user with the provided verification token
+        const user = await User.findOne({ verificationToken: token });
+        if (!user) {
+            return res.status(404).json({ message: 'Invalid verification token' });
+        }
+        // Update the user's verification status
+        user.verified = true;
+        user.verificationToken = null;
+        await user.save();
+
+        res.status(200).json({ message: 'Email verified successfully' });
+    } catch(err){
+        next(err)
+        res.status(500).json({ message: 'Internal server error' });
     }
 }
 
@@ -29,11 +80,11 @@ export const login = async(req, res, next) => {
             username: req.body.username
         })
         if(!user) 
-            return next(createError(404, "User not found!")) 
+            return next(createError(404, "Tên tài khoản không tồn tại")) 
         
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password)
         if(!isPasswordCorrect) 
-            return next(createError(404, "Wrong password or username!")) 
+            return next(createError(404, "Sai thông tin tài khoản hoặc mật khẩu")) 
         
         // Token
         const token = jwt.sign({

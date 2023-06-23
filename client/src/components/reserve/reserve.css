@@ -24,7 +24,7 @@
 }
 
 .rItem {
-  /* display: flex; */
+  display: flex;
   align-items: center;
   gap: 50px;
   padding: 20px;

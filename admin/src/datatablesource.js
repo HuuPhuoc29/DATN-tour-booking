@@ -1,4 +1,4 @@
-import avatar from "../src/asset/images/avatar.jpg"
+import avatar from "../src/assets/images/avatar.jpg"
 import moment from "moment";
 import dateFormat, { masks } from "dateformat";
 
