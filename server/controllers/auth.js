@@ -2,6 +2,7 @@ import User from "../models/User.js"
 import { createError } from "../utils/error.js";
 
 import { v4 as uuidv4 } from 'uuid';
+import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
@@ -34,7 +35,8 @@ export const register = async(req, res, next) => {
         });
 
         // Send the verification email
-        const verificationLink = `https://localhost:8800.com/verify-email/${verificationToken}`;
+        const PORT = process.env.PORT
+        const verificationLink = `http://localhost:${PORT}/server/auth/verify-email/${verificationToken}`;
         const mailOptions = {
             from: 'luuvanhuuphuoc@gmail.com',
             to: email,
@@ -45,11 +47,10 @@ export const register = async(req, res, next) => {
         await transporter.sendMail(mailOptions);
 
         res.status(200).send("User has been created")
-        res.status(200).json({ message: 'Registration successful' });
-
+        res.status(200).json({ message: 'Registration successful' })
     } catch(err){
         next(err)
-        res.status(500).json({ message: 'Internal server error' });
+        // res.status(500).json({ message: 'Internal server error' });
     }
 }
 
@@ -62,15 +63,16 @@ export const verifyEmail = async(req, res, next) => {
         if (!user) {
             return res.status(404).json({ message: 'Invalid verification token' });
         }
+      
         // Update the user's verification status
-        user.verified = true;
+            user.isVerified = true;
         user.verificationToken = null;
         await user.save();
 
         res.status(200).json({ message: 'Email verified successfully' });
     } catch(err){
         next(err)
-        res.status(500).json({ message: 'Internal server error' });
+        // res.status(500).json({ message: 'Internal server error' });
     }
 }
 
@@ -85,7 +87,8 @@ export const login = async(req, res, next) => {
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password)
         if(!isPasswordCorrect) 
             return next(createError(404, "Sai thông tin tài khoản hoặc mật khẩu")) 
-        
+        if(user.isVerified == false) 
+            return next(createError(404, "Tài khoản chưa được xác nhận")) 
         // Token
         const token = jwt.sign({
             id: user._id,
@@ -107,6 +110,7 @@ export const login = async(req, res, next) => {
 }
 
 export const logout = async(req, res, next) => {
+
     try {
         
         if (req.headers && req.headers.authorization) { 

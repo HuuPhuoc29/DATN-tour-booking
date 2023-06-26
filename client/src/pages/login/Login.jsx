@@ -71,7 +71,7 @@ const Login = () => {
             </div>
             {error && <span style={{ color: "red" }}>{error.message}</span>}
             <div class="forget">
-              <Link>Quên mật khẩu</Link>
+              <Link to="/reset">Quên mật khẩu</Link>
             </div>
               
           </form>

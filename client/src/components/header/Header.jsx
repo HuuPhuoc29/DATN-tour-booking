@@ -14,8 +14,9 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { Table, Space, Input, Modal, Button } from 'antd';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -82,12 +83,17 @@ const Header = ({ type }) => {
       >
         <div className="headerList">
           <div className="headerListItem active">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
+              <FontAwesomeIcon icon={faBed} />
+              <span className="headerSpan">Tours</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Flights</span>
+              <FontAwesomeIcon icon={faBed} />
+              <span className="headerSpan">Hotels</span>
+          </div>
+          {/* <div className="headerListItem">
+            <Link to={`/hotels`} className="link">
+              <TravelExploreIcon /> <span>Hotels</span>
+            </Link>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faCar} />
@@ -100,19 +106,15 @@ const Header = ({ type }) => {
           <div className="headerListItem">
             <FontAwesomeIcon icon={faTaxi} />
             <span>Airport taxis</span>
-          </div>
+          </div> */}
         </div>
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
+              Tour du lịch, khách sạn tốt nhất.
             </h1>
-            
-
-
             <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free account
+              Cùng đồng hành với chuyến đi của bạn – trải nghiệm tuyệt vời bằng tài khoản miễn phí
             </p>
             {!user && <button className="headerBtn" onClick={handleheaderBtn}>Đăng nhập / Đăng ký</button>}
             <div className="headerSearch">

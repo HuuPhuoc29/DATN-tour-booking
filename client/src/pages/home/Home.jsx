@@ -7,6 +7,7 @@ import Navbar from "../../components/navbar/Navbar";
 import PropertyList from "../../components/propertyList/PropertyList";
 import { Box, Image, Text } from '@chakra-ui/react';
 import "./home.css";
+import TourSearch from "../../components/tourSearch/TourSearch";
 
 const Home = () => {
   return (
@@ -129,6 +130,7 @@ const Home = () => {
             </Box>
           </Box>      
         </Box> 
+        {/* <TourSearch/> */}
         <h1 className="homeTitle">Browse by property type</h1>
         <PropertyList/>
         <h1 className="homeTitle">Homes guests love</h1>

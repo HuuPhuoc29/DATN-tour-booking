@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import "./searchItem.css";
+import "./searchItemTour.css";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PlaceIcon from '@mui/icons-material/Place';
 
-const SearchItem = ({item}) => {
+const SearchItemTour = ({item}) => {
   console.log(item)
-  function capitalizeFirstLetter(string) {
-      // return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  
   return (
     <div className="searchItem">
       <img src={item.photos[0]} alt="" className="siImg" />
@@ -19,7 +17,6 @@ const SearchItem = ({item}) => {
           Studio Apartment with Air conditioning
         </span> */}
         <span className="siFeatures">{item.description}</span>
-        <span className="siType">{capitalizeFirstLetter(item.type)}</span>
         <span className="siCancelOpSubtitle">
           Đặt phòng ngay hôm nay!
         </span>
@@ -41,4 +38,4 @@ const SearchItem = ({item}) => {
   );
 };
 
-export default SearchItem;
+export default SearchItemTour;

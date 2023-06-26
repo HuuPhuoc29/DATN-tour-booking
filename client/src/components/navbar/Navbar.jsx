@@ -5,8 +5,18 @@ import "./navbar.css"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
 
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
   const { user } = useContext(AuthContext)
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+    navigate("/login")
+  }
+
   return (
     <div className="navbar">
       <div className="navContainer">
@@ -17,6 +27,9 @@ const Navbar = () => {
           ? (
           <div className="navItems">
             <span className="navSpan">{user.username}</span>
+            <button className="navButton" onClick={handleLogout}>
+              Đăng xuất
+            </button>
             <div class="btn-group">
               <button id="drop" type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown-menu" data-toggle="dropdown" aria-expanded="false" style={{position: "relative"}}>
               </button>

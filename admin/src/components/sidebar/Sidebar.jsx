@@ -19,8 +19,18 @@ import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 import logo from "../../assets/logo/logo.png"
 
+import { useNavigate } from "react-router-dom";
+
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+    navigate("/login")
+  }
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -99,10 +109,11 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          <li type="button" class="btn btn-link" onClick={handleLogout} style={{ textDecoration: "none" }}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
+
         </ul>
       </div>
       <div className="bottom">

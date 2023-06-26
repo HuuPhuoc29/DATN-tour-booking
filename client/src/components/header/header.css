@@ -33,6 +33,9 @@
   padding: 10px;
   border-radius: 20px;
 }
+.headerSpan{
+  color: white;  
+}
 
 .headerDesc {
   margin: 20px 0px;

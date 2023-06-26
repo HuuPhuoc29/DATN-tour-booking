@@ -8,7 +8,7 @@ import NewTour from "./pages/new/newTour/NewTour";
 import NewHotel from "./pages/new/newHotel/NewHotel";
 import NewRoom from "./pages/new/newRoom/NewRoom";
 import Hotel from "./pages/show/hotel/Hotel"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Switch } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
@@ -16,6 +16,8 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import { tourColumns, hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import Register from './pages/register/Register';
+import NotFoundPage from './components/notfound/NotFound';
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -159,6 +161,13 @@ function App() {
               />
             </Route>
           </Route>
+          <Route 
+            path="*" 
+            element={
+              <ProtectedRoute>
+                <NotFoundPage />
+              </ProtectedRoute>
+            }/>
         </Routes>
       </BrowserRouter>
     </div>
