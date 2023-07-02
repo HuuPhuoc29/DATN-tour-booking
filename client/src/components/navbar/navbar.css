@@ -1,5 +1,5 @@
 .navbar{
-  height: 50px;
+  /* height: 50px; */
   background-color: #003580;
   display: flex;
   justify-content: center;
@@ -21,8 +21,8 @@
 
 .logoNav{
   position: initial;
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 75px;
+  max-height: 75px;
   /* padding-top: 10px; */
 }
 
@@ -43,4 +43,57 @@
 
 .navButtonLink:visited {
   text-decoration: none;
+}
+
+.navSpan{
+  /* padding: 25px; */
+  margin-top: 25px;
+}
+
+.button-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  margin-left: 30px;
+  background-color: white;
+  /* color: white; */
+  /* padding: 5px ; */
+  width: 45px;
+  height: 45px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.dropdown-button.hide-border {
+  border: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content a {
+  color: #5C727D;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-content,
+.button-dropdown:focus .dropdown-content {
+  display: block;
 }

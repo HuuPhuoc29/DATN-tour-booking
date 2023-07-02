@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom"
 import logo from "../../assets/logo/logo.png"
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import "./navbar.css"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
-
-import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext)
-  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.clear();
     window.location.reload();
-    navigate("/login")
   }
+
+  const [isOpen, setIsOpen] = useState(false);
+  // const [hideBorder, setHideBorder] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+    // setHideBorder(true);
+  };
 
   return (
     <div className="navbar">
@@ -27,18 +31,21 @@ const Navbar = () => {
           ? (
           <div className="navItems">
             <span className="navSpan">{user.username}</span>
-            <button className="navButton" onClick={handleLogout}>
+            {/* <button className="navButton" onClick={handleLogout}>
               Đăng xuất
-            </button>
-            <div class="btn-group">
-              <button id="drop" type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown-menu" data-toggle="dropdown" aria-expanded="false" style={{position: "relative"}}>
+            </button> */}
+            <div className="button-dropdown">
+              <button className={`dropdown-button ${isOpen ? 'hide-border' : ''}`} onClick={toggleDropdown}>
+                <ArrowDropDownIcon />
               </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-              </ul>
+              {isOpen && (
+                <div className="dropdown-content">
+                  <Link to="/">Thông tin cá nhân</Link>
+                  <Link to="/">Đổi mật khẩu</Link>
+                  <div class="dropdown-divider"></div>
+                  <Link onClick={handleLogout}>Đăng xuất</Link>
+                </div>
+              )}
             </div>
           </div>) 
           : 
