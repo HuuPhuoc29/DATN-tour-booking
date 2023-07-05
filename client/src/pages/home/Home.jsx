@@ -1,4 +1,6 @@
 import Featured from "../../components/featured/Featured";
+import FeaturedTours from "../../components/featuredTours/FeaturedTours";
+
 import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
@@ -8,6 +10,7 @@ import PropertyList from "../../components/propertyList/PropertyList";
 import { Box, Image, Text } from '@chakra-ui/react';
 import "./home.css";
 import TourSearch from "../../components/tourSearch/TourSearch";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -16,6 +19,11 @@ const Home = () => {
       <Header/>
       <div className="homeContainer">
         <Featured/>
+        <div className="tour">
+          <h1 className="homeTitle">Tour du lịch nổi tiếng</h1>
+          <Link to="/">Xem tất cả</Link>
+        </div>
+        <FeaturedTours/>
         <Box display="flex" flexDir={"column"} textAlign={"center"} w="full" mb="20px">
           {/* <Box >
             <Text fontSize={"28px"} className='fontReey' color={"var(--highlight-color)"}>Danh sách địa điểm</Text>

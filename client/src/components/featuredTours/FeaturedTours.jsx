@@ -1,14 +1,14 @@
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch.js";
 import room from "../../assets/images/room.jpg"
-import "./featuredProperties.css";
+import "./featuredTours.css";
 
 import AddCardIcon from '@mui/icons-material/AddCard';
 import PlaceIcon from '@mui/icons-material/Place';
 
-const FeaturedProperties = () => {
+const FeaturedTours = () => {
 
   const { data, loading, error } = useFetch(
-    "/hotels?featured=true"
+    "/tours?featured=true"
   );
   return (
     <div className="fp">
@@ -24,7 +24,7 @@ const FeaturedProperties = () => {
            />
            <span className="fpName">{item.name}</span>
            <span className="fpCity"><PlaceIcon /> {item.city}</span>
-           <span className="fpPrice"><AddCardIcon/> Starting from <b>{item.cheapestPrice}</b></span>
+           <span className="fpPrice"><AddCardIcon/> Starting from <b>{item.price}</b></span>
            { item.rating && <div className="fpRating">
              <button>{item.rating}</button>
              <span>Excellent</span>
@@ -33,11 +33,8 @@ const FeaturedProperties = () => {
        )) }
      </>
       }
-      
-      
-      
     </div>
   );
 };
 
-export default FeaturedProperties;
+export default FeaturedTours;
