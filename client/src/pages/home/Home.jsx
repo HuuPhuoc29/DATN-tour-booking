@@ -21,7 +21,7 @@ const Home = () => {
         <Featured/>
         <div className="tour">
           <h1 className="homeTitle">Tour du lịch nổi tiếng</h1>
-          <Link to="/">Xem tất cả</Link>
+          <Link to="/tours">Xem tất cả</Link>
         </div>
         <FeaturedTours/>
         <Box display="flex" flexDir={"column"} textAlign={"center"} w="full" mb="20px">

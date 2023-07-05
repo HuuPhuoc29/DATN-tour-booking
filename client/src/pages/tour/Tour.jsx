@@ -124,11 +124,14 @@ const Tour = () => {
             <FontAwesomeIcon icon={faLocationDot} />
             <span>{data.address}</span>
           </div>
-          <span className="hotelDistance">
+          {/* <span className="hotelDistance">
             Excellent location – {data.distance}m from center
           </span>
           <span className="hotelPriceHighlight">
             Book a stay over {data.cheapestPrice} at this property and get a free airport taxi
+          </span> */}
+          <span className="hotelPriceHighlight">
+            Một số hình ảnh
           </span>
           <div className="hotelImages">
             {data.photos?.map((photo, i) => (
@@ -142,82 +145,7 @@ const Tour = () => {
               </div>
             ))}
           </div>
-          <div className="introduct-list-1">
-            <div className="introduce-card">
-                <IoMdLaptop className='card-icon'/>
-                <div className="introduce-card-title">
-                    Không gian riêng tư
-                </div>
-                <div className="introduce-cart-txt">
-                    Để có một phòng ngủ thoải mái trên diện tích chỉ 
-                </div>
-            </div>
-            <div className="introduce-card">
-                <AiOutlineWifi className='card-icon'/>   
-                <div className="introduce-card-title">
-                    Wifi miễn phí
-                </div>
-                <div className="introduce-cart-txt">
-                    Để có một phòng ngủ thoải mái trên diện tích chỉ 
-                </div>
-            </div>
-            <div className="introduce-card">
-                <FaParking className='card-icon'/>
-                <div className="introduce-card-title">
-                    Bãi đỗ xe
-                </div>
-                <div className="introduce-cart-txt">
-                    Để có một phòng ngủ thoải mái trên diện tích chỉ 
-                </div>
-            </div>
-            <div className="introduce-card">
-                <GiCoffeeCup className='card-icon'/>
-                <div className="introduce-card-title">
-                    Ăn sáng
-                </div>
-                <div className="introduce-cart-txt">
-                    Để có một phòng ngủ thoải mái trên diện tích chỉ 
-                </div>
-            </div>
-          </div>    
-          <div className="introduct-list-2">
-            <div className="introduce-card">
-                <IoMdLaptop className='card-icon'/>
-                <div className="introduce-card-title">
-                    Lễ tân
-                </div>
-                <div className="introduce-cart-txt">
-                    Để có một phòng ngủ thoải mái trên diện tích chỉ 
-                </div>
-            </div>
-            <div className="introduce-card">
-                <AiOutlineWifi className='card-icon'/>   
-                <div className="introduce-card-title">
-                    Không hút thuốc
-                </div>
-                <div className="introduce-cart-txt">
-                    Để có một phòng ngủ thoải mái trên diện tích chỉ 
-                </div>
-            </div>
-            <div className="introduce-card">
-                <FaParking className='card-icon'/>
-                <div className="introduce-card-title">
-                    Dịch vụ
-                </div>
-                <div className="introduce-cart-txt">
-                    Để có một phòng ngủ thoải mái trên diện tích chỉ 
-                </div>
-            </div>
-            <div className="introduce-card">
-                <GiCoffeeCup className='card-icon'/>
-                <div className="introduce-card-title">
-                    Hồ bơi
-                </div>
-                <div className="introduce-cart-txt">
-                    Để có một phòng ngủ thoải mái trên diện tích chỉ 
-                </div>
-            </div>
-          </div>
+          
           <div className="hotelDetails">
             <div className="hotelDetailsTexts">
               <h1 className="hotelTitle">{data.title}</h1>
