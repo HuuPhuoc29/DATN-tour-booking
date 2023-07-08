@@ -26,6 +26,7 @@ const Datatable = ({columns}) => {
   const [fLen,setLenFin] = useState([])
   const [isModalUpdateVisible, setIsModalUpdateVisible] = useState(false);
   const [isModalImageVisible, setIsModalImageVisible] = useState(false);
+  const [isModalSuccessfullVisible, setIsModalSuccessfullVisible] = useState(false);
 
   console.log(list)
   const navigate = useNavigate();
@@ -48,6 +49,15 @@ const Datatable = ({columns}) => {
   };
   const handleUpdateCancel = () => {
     setIsModalUpdateVisible(false);
+  };
+
+  const handleSuccessfullOk = () => {
+    setIsModalSuccessfullVisible(false);
+    window.location.reload();
+  };
+  const handleSuccessfullCancel = () => {
+    setIsModalSuccessfullVisible(false);
+    window.location.reload();
   };
 
   const handleShow = async (id) => {
@@ -93,12 +103,11 @@ const Datatable = ({columns}) => {
       console.log(id)
       await axios.delete(`/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
-      alert("Thành công")
+      setIsModalSuccessfullVisible(true);
       // // const getRes = await axios.get(`/${path}`)
       // setListFin(getRes.data)
       // setLenFin(getRes.data.length)   
       // console.log(getRes)
-      window.location.reload();
     } catch (err) {}
   };
 
@@ -265,12 +274,14 @@ const Datatable = ({columns}) => {
         <div className="imgContainer">
           <div className="left">
             <img
+              className="imgIcon"
               src={
                 files
                   ? URL.createObjectURL(files[0])
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
               alt=""
+              style={{ width: "100px"}}
             />
           </div>
           <div className="right">
@@ -289,6 +300,20 @@ const Datatable = ({columns}) => {
               </div>
             </form>
           </div>
+        </div>
+      </Modal>
+
+      {/* Successfull's modal */}
+      <Modal
+        title="Chú ý"
+        open={isModalSuccessfullVisible}
+        onOk={handleSuccessfullOk}
+        onCancel={handleSuccessfullCancel}
+        cancelButtonProps={{ style: { display: 'none' } }}
+      >
+        {/* <UploadBox /> */}
+        <div className="Container">
+          <span>Thành công</span>
         </div>
       </Modal>
     </div>

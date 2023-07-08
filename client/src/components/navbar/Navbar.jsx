@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/AuthContext"
 
 const Navbar = () => {
   const { user } = useContext(AuthContext)
-
+  console.log(user)
   const handleLogout = () => {
     localStorage.clear();
     window.location.reload();
@@ -30,6 +30,13 @@ const Navbar = () => {
         {user 
           ? (
           <div className="navItems">
+            <div className="item">
+              <img
+                src={user.img}
+                alt=""
+                className="avatar"
+              />
+            </div>
             <span className="navSpan">{user.username}</span>
             {/* <button className="navButton" onClick={handleLogout}>
               Đăng xuất
@@ -40,10 +47,10 @@ const Navbar = () => {
               </button>
               {isOpen && (
                 <div className="dropdown-content">
-                  <Link to="/">Thông tin cá nhân</Link>
-                  <Link to="/">Đổi mật khẩu</Link>
+                  <Link className="dropdown-content-a" to="/">Thông tin cá nhân</Link>
+                  <Link className="dropdown-content-a" to="/">Đổi mật khẩu</Link>
                   <div class="dropdown-divider"></div>
-                  <Link onClick={handleLogout}>Đăng xuất</Link>
+                  <Link className="dropdown-content-a" onClick={handleLogout}>Đăng xuất</Link>
                 </div>
               )}
             </div>

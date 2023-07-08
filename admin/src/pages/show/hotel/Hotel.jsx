@@ -131,11 +131,11 @@ const Hotel = () => {
               <p className="hotelDesc">{data.description}</p>
             </div>
             <div className="hotelDetailsPrice">
-              <h1>Perfect for a 9-night stay!</h1>
+              {/* <h1>Perfect for a 9-night stay!</h1>
               <span>
                 Located in the real heart of Krakow, this property has an
                 excellent location score of 9.8!
-              </span>
+              </span> */}
               <h2>
                 <b>945</b> (9 nights)
               </h2>

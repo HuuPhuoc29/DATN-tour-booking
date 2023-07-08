@@ -6,10 +6,26 @@ import { useState } from "react";
 import { tourInputs } from "../../../formSource";
 import useFetch from "../../../hooks/useFetch";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Modal } from 'antd';
 
 const NewTour = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
+  const [featured, setFeatured] = useState(false);
+  const navigate = useNavigate();
+
+  const [isModalSuccessfullVisible, setIsModalSuccessfullVisible] = useState(false);
+
+
+  const handleSuccessfullOk = () => {
+    setIsModalSuccessfullVisible(false);
+    navigate("/tours")
+  };
+  const handleSuccessfullCancel = () => {
+    setIsModalSuccessfullVisible(false);
+    navigate("/tours")
+  };
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -37,11 +53,13 @@ const NewTour = () => {
 
       const newtour = {
         ...info,
+        featured,
         photos: list,
       };
 
       await axios.post("/tours", newtour);
-      alert("Thành công")
+      setIsModalSuccessfullVisible(true);
+
     } catch(err) {
       console.log(err)
     }
@@ -95,8 +113,8 @@ const NewTour = () => {
                 </div>
               ))}
               <div className="formInput">
-                <label>Feature</label>
-                <select id="featured">
+                <label id="featured">Feature</label>
+                <select id="featured" onChange={(e) => setFeatured(e.target.value)}>
                   <option value={false}>No</option>
                   <option value={true}>Yes</option>
                 </select>
@@ -107,6 +125,19 @@ const NewTour = () => {
           </div>
         </div>
       </div>
+      {/* Successfull's modal */}
+      <Modal
+        title="Chú ý"
+        open={isModalSuccessfullVisible}
+        onOk={handleSuccessfullOk}
+        onCancel={handleSuccessfullCancel}
+        cancelButtonProps={{ style: { display: 'none' } }}
+      >
+        {/* <UploadBox /> */}
+        <div className="Container">
+          <span>Thành công</span>
+        </div>
+      </Modal>
     </div>
   );
 };

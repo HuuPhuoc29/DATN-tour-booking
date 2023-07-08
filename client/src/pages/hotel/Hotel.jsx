@@ -118,7 +118,7 @@ const Hotel = () => {
           </div>
         )}
         <div className="hotelWrapper">
-          <button onClick={handleClick} className="bookNow">Reserve or Book Now!</button>
+          <button onClick={handleClick} className="bookNow">Đặt ngay</button>
           <h1 className="hotelTitle">{data.name}</h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
@@ -232,7 +232,7 @@ const Hotel = () => {
               <h2>
                 {/* <b>945</b> (9 nights) */}
               </h2>
-              <button onClick={handleClick}>Reserve or Book Now!</button>
+              <button onClick={handleClick}>Đặt ngay</button>
             </div>
           </div>
         </div>

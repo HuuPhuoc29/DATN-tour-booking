@@ -33,7 +33,7 @@ const Tour = () => {
   const { user } = useContext(AuthContext)
   const navigate = useNavigate();
 
-  const { dates, options } = useContext(SearchContext);
+  // const { dates, options } = useContext(SearchContext);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -41,6 +41,21 @@ const Tour = () => {
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return diffDays;
   }
+
+  const [options, setOptions] = useState({
+    number: 1,
+  });
+
+  console.log(options.number)
+
+  const handleOption = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+      };
+    });
+  };
 
   // const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
@@ -118,19 +133,20 @@ const Tour = () => {
           </div>
         )}
         <div className="hotelWrapper">
-          <button onClick={handleClick} className="bookNow">Reserve or Book Now!</button>
+          {/* <button onClick={handleClick} className="bookNow">Đặt ngay</button> */}
+
           <h1 className="hotelTitle">{data.name}</h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
-            <span>{data.address}</span>
+            <span>{data.city}</span>
           </div>
           {/* <span className="hotelDistance">
             Excellent location – {data.distance}m from center
-          </span>
-          <span className="hotelPriceHighlight">
-            Book a stay over {data.cheapestPrice} at this property and get a free airport taxi
           </span> */}
           <span className="hotelPriceHighlight">
+            Giá tiền: {data.price} 
+          </span>
+          <span className="hotelDistance">
             Một số hình ảnh
           </span>
           <div className="hotelImages">
@@ -152,15 +168,30 @@ const Tour = () => {
               <p className="hotelDesc">{data.description}</p>
             </div>
             <div className="hotelDetailsPrice">
-              <h1>Perfect for a 9-night stay!</h1>
-              <span>
-                Located in the real heart of Krakow, this property has an
-                excellent location score of 9.8!
-              </span>
-              <h2>
-                <b>945</b> (9 nights)
-              </h2>
-              <button onClick={handleClick}>Reserve or Book Now!</button>
+              <h1>Nhập số lượng người</h1>
+              <div className="optionItem">
+                <span className="optionText">Số người</span>
+                <div className="optionCounter">
+                  <button
+                    disabled={options.number <= 1}
+                    className="optionCounterButton"
+                    onClick={() => handleOption("number", "d")}
+                  >
+                    -
+                  </button>
+                  <span className="optionCounterNumber">
+                    {options.number}
+                  </span>
+                  <button
+                    className="optionCounterButton"
+                    onClick={() => handleOption("number", "i")}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <h1>Tổng cộng: </h1> <h6 style={{ color: "blue" }}>{options.number*data.price}</h6>
+              <button onClick={handleClick}>Đặt ngay</button>
             </div>
           </div>
         </div>

@@ -47,7 +47,8 @@
 
 .navSpan{
   /* padding: 25px; */
-  margin-top: 25px;
+  /* margin-top: 25px; */
+  margin-left: 10px;
 }
 
 .button-dropdown {
@@ -96,4 +97,20 @@
 .dropdown-content,
 .button-dropdown:focus .dropdown-content {
   display: block;
+}
+
+.dropdown-content-a{
+  font-size: 15px;
+}
+
+.navItems{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }

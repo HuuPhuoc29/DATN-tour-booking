@@ -6,6 +6,8 @@ import { useState } from "react";
 import { hotelInputs } from "../../../formSource";
 import useFetch from "../../../hooks/useFetch";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Modal } from "antd";
 
 const NewHotel = () => {
   const [files, setFiles] = useState("");
@@ -13,6 +15,19 @@ const NewHotel = () => {
   const [rooms, setRooms] = useState([]);
   const [type, setType] = useState("");
   const [featured, setFeatured] = useState(false);
+
+  const navigate = useNavigate();
+
+  const [isModalSuccessfullVisible, setIsModalSuccessfullVisible] = useState(false);
+
+  const handleSuccessfullOk = () => {
+    setIsModalSuccessfullVisible(false);
+    navigate("/hotels")
+  };
+  const handleSuccessfullCancel = () => {
+    setIsModalSuccessfullVisible(false);
+    navigate("/hotels")
+  };
 
   const { data, loading, error } = useFetch("/rooms");
 
@@ -77,7 +92,7 @@ const NewHotel = () => {
       };
 
       await axios.post("/hotels", newhotel);
-      alert("Thành công")
+      setIsModalSuccessfullVisible(true);
     } catch(err) {
       console.log(err)
     }
@@ -171,6 +186,19 @@ const NewHotel = () => {
           </div>
         </div>
       </div>
+      {/* Successfull's modal */}
+      <Modal
+        title="Chú ý"
+        open={isModalSuccessfullVisible}
+        onOk={handleSuccessfullOk}
+        onCancel={handleSuccessfullCancel}
+        cancelButtonProps={{ style: { display: 'none' } }}
+      >
+        {/* <UploadBox /> */}
+        <div className="Container">
+          <span>Thành công</span>
+        </div>
+      </Modal>
     </div>
   );
 };

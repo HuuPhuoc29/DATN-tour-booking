@@ -55,10 +55,13 @@ const Navbar = () => {
           </div>
           <div className="item">
             <img
-              src={avatar}
+              src={user.img || avatar}
               alt=""
               className="avatar"
             />
+          </div>
+          <div className="item">
+            <span>{user.username}</span>
           </div>
         </div>
       </div>

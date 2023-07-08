@@ -81,42 +81,42 @@ export const productInputs = [
 export const tourInputs = [
   {
     id: "name",
-    label: "Name",
+    label: "Tên tour",
     type: "text",
-    placeholder: "My Hotel",
+    placeholder: "Nhập tên tour du lịch",
   },
   {
     id: "city",
-    label: "City",
+    label: "Điểm đến",
     type: "text",
-    placeholder: "New York",
+    placeholder: "Nhập điểm đến",
   },
   {
     id: "title",
-    label: "Title",
+    label: "Tiêu đề",
     type: "text",
-    placeholder: "The best Hotel",
+    placeholder: "Nhập tiêu đề",
   },
   {
     id: "description",
-    label: "Description",
+    label: "Mô tả",
     type: "text",
-    placeholder: "description",
+    placeholder: "Nhập mô tả",
   },
   {
     id: "price",
-    label: "Price",
+    label: "Giá tiền",
     type: "text",
-    placeholder: "100",
+    placeholder: "Nhập giá tiền",
   },
 ];
 
 export const hotelInputs = [
   {
     id: "name",
-    label: "Name",
+    label: "Tên khách sạn",
     type: "text",
-    placeholder: "My Hotel",
+    placeholder: "Nhập tên khách sạn",
   },
   // {
   //   id: "type",
@@ -126,39 +126,39 @@ export const hotelInputs = [
   // },
   {
     id: "city",
-    label: "City",
+    label: "Thành phố",
     type: "text",
-    placeholder: "New York",
+    placeholder: "Nhập thành phố",
   },
   {
     id: "address",
-    label: "Address",
+    label: "Địa chỉ",
     type: "text",
-    placeholder: "elton st, 216",
+    placeholder: "Nhập địa chỉ",
   },
   {
     id: "distance",
-    label: "Distance from City Center",
+    label: "Khoảng cách",
     type: "text",
-    placeholder: "500",
+    placeholder: "Nhập khoảng cách",
   },
   {
     id: "title",
-    label: "Title",
+    label: "Tiêu đề",
     type: "text",
-    placeholder: "The best Hotel",
+    placeholder: "Nhập tiêu đề",
   },
   {
     id: "description",
-    label: "Description",
+    label: "Mô tả",
     type: "text",
-    placeholder: "description",
+    placeholder: "Nhập mô tả",
   },
   {
     id: "cheapestPrice",
-    label: "Price",
+    label: "Giá tiền phổ thông",
     type: "text",
-    placeholder: "200",
+    placeholder: "Nhập giá tiền",
   },
 ];
 
